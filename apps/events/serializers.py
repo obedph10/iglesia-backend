@@ -7,7 +7,7 @@ class EventListSerializer(serializers.ModelSerializer):
         model = Event
         fields = [
             "id", "title", "date", "time", "location",
-            "category", "image", "featured", "created_at",
+            "category", "image", "order", "created_at",
         ]
 
 
@@ -16,6 +16,6 @@ class EventDetailSerializer(serializers.ModelSerializer):
         model = Event
         fields = [
             "id", "title", "description", "date", "time", "end_date",
-            "location", "image", "category", "registration_link",
-            "published", "featured", "created_at",
+            "location", "image", "category", "registration_link", "order",
+            "published", "created_at",
         ]

@@ -16,7 +16,7 @@ class SermonListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Sermon
         fields = [
-            "id", "title", "speaker", "youtube_url", "date",
+            "id", "title", "speaker", "youtube_url", "date", "order",
             "image", "series", "series_name", "created_at",
         ]
 
@@ -28,5 +28,5 @@ class SermonDetailSerializer(serializers.ModelSerializer):
         model = Sermon
         fields = [
             "id", "title", "description", "speaker", "youtube_url",
-            "date", "image", "series", "series_detail", "published", "created_at",
+            "date", "order", "image", "series", "series_detail", "published", "created_at",
         ]

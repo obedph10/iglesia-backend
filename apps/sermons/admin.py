@@ -10,8 +10,19 @@ class SeriesAdmin(admin.ModelAdmin):
 
 @admin.register(Sermon)
 class SermonAdmin(admin.ModelAdmin):
-    list_display = ["title", "speaker", "date", "series", "published"]
-    list_editable = ["published"]
+    list_display = ["title", "speaker", "order", "date", "series", "published"]
+    list_editable = ["order", "published"]
     list_filter = ["series", "speaker", "published"]
     search_fields = ["title", "speaker", "description"]
     date_hierarchy = "date"
+    fieldsets = (
+        ("Información", {
+            "fields": ("title", "description", "speaker", "youtube_url", "image")
+        }),
+        ("Organización", {
+            "fields": ("series", "order")
+        }),
+        ("Estado", {
+            "fields": ("date", "published")
+        }),
+    )

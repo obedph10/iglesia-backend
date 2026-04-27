@@ -32,12 +32,13 @@ class Sermon(models.Model):
         related_name="sermons",
     )
     published = models.BooleanField("Publicado", default=True, db_index=True)
+    order = models.IntegerField("Orden", default=999, db_index=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         verbose_name = "Predicación"
         verbose_name_plural = "Predicaciones"
-        ordering = ["-date"]
+        ordering = ["order", "-date"]
 
     def __str__(self):
         return f"{self.title} - {self.speaker}"

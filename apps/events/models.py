@@ -23,13 +23,13 @@ class Event(models.Model):
     )
     registration_link = models.URLField("Enlace de registro", blank=True)
     published = models.BooleanField("Publicado", default=True)
-    featured = models.BooleanField("Destacado", default=False)
+    order = models.IntegerField("Orden", default=999, db_index=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         verbose_name = "Evento"
         verbose_name_plural = "Eventos"
-        ordering = ["date", "time"]
+        ordering = ["order", "date", "time"]
 
     def __str__(self):
         return self.title

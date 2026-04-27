@@ -17,5 +17,5 @@ class GalleryImageSerializer(serializers.ModelSerializer):
         model = GalleryImage
         fields = [
             "id", "title", "description", "image", "category",
-            "category_name", "featured", "created_at",
+            "category_name", "order", "created_at",
         ]

@@ -11,6 +11,7 @@ from .serializers import (
 
 
 class AllianceViewSet(BaseReadOnlyViewSet):
+    queryset = Alliance.objects.filter(is_active=True)
     serializer_list_class = AllianceListSerializer
     serializer_detail_class = AllianceDetailSerializer
 

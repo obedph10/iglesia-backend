@@ -28,13 +28,13 @@ class GalleryImage(models.Model):
         related_name="images",
     )
     published = models.BooleanField("Publicado", default=True, db_index=True)
-    featured = models.BooleanField("Destacado", default=False, db_index=True)
+    order = models.IntegerField("Orden", default=999, db_index=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         verbose_name = "Imagen de galería"
         verbose_name_plural = "Imágenes de galería"
-        ordering = ["-created_at"]
+        ordering = ["order", "-created_at"]
 
     def __str__(self):
         return self.title or f"Imagen {self.id}"
