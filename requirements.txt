@@ -12,3 +12,5 @@ redis==5.0.1
 celery==5.3.6
 Pillow==10.2.0
 python-dotenv==1.0.1
+whitenoise[brotli]==6.6.0
+dj-database-url==2.1.0

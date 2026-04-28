@@ -1,0 +1,34 @@
+services:
+  - type: web
+    name: iglesia-backend
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/contact/settings/
+    envVars:
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      - key: DJANGO_DEBUG
+        value: "False"
+      - key: DJANGO_SETTINGS_MODULE
+        value: core.settings
+      - key: DJANGO_ALLOWED_HOSTS
+        value: "iglesia-backend.onrender.com"
+      - key: DJANGO_CSRF_TRUSTED_ORIGINS
+        value: "https://iglesia-backend.onrender.com"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: iglesia-db
+          property: connectionString
+      # CORS: set to your Vercel frontend URL after deploying frontend
+      - key: DJANGO_CORS_ALLOWED_ORIGINS
+        value: "https://tu-frontend.vercel.app,http://localhost:5173"
+      # Email (optional — configure with your Gmail credentials)
+      - key: EMAIL_BACKEND
+        value: django.core.mail.backends.console.EmailBackend
+
+databases:
+  - name: iglesia-db
+    plan: free
+    databaseName: iglesia_db
+    user: iglesia_user
